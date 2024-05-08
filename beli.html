@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pesanan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        body{
+            width: 50%;
+            margin: auto;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    <a href="beranda.html"><button type="button" class="btn-close" aria-label="Close"></button></a>
+    <h1>Formulir Pesanan</h1>
+    <div class="container mt-5">
+        <input type="text" id="nama" name="nama" class="form-control mb-3" placeholder="Nama">
+        <select class="form-select mb-3" aria-label="Default select example">
+            <option selected>Pilih Merek HP</option>
+            <option value="1">Vivo</option>
+            <option value="2">Samsung</option>
+            <option value="3">Infinix</option>
+        </select>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Jumlah</span>
+            <input type="text" class="form-control" aria-label="Jumlah">
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Alamat</label>
+        </div>
+        <button id="beliButton" class="btn btn-primary mt-3">Beli</button>
+    </div>
+
+    <script>
+        document.getElementById('beliButton').addEventListener('click', function() {
+            var nama = document.getElementById('nama').value;
+            var merekHP = document.querySelector('.form-select').value;
+            var jumlah = document.querySelector('.input-group input').value;
+            var alamat = document.getElementById('floatingTextarea2').value;
+
+            if (nama === '' || merekHP === 'Pilih Merek HP' || jumlah === '' || alamat === '') {
+                alert('Mohon lengkapi semua data pesanan.');
+            } else {
+                var pesan = 'Pesanan Anda:\nNama: ' + nama + '\nMerek HP: ' + merekHP + '\nJumlah: ' + jumlah + '\nAlamat: ' + alamat;
+                alert(pesan);
+                document.getElementById('nama').value = '';
+                document.querySelector('.form-select').selectedIndex = 0;
+                document.querySelector('.input-group input').value = '';
+                document.getElementById('floatingTextarea2').value = '';
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
